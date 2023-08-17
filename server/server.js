@@ -1,39 +1,34 @@
 const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
 const db = require("./config/connection");
-const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth.js");
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 
-const app = express(); // Declare app here
-
-// Create instance of ApolloServer
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware,
-});
-
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const startApolloServer = async () => {
-  await server.start();
+// Serve static assets (React build files) if in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/src")));
 
-  server.applyMiddleware({ app });
-
-  // if we're in production, serve client/build as static assets
-  if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../client/build")));
-  }
-
-  db.once("open", () => {
-    app.listen(PORT, () =>
-      console.log(`Server running on http://localhost:${PORT}/graphql`)
-    );
+  // Serve React app's HTML file for the root URL
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/src/Home.js"));
   });
-};
+}
 
-startApolloServer();
+
+// // Example route
+// app.get("/api/Home", (req, res) => {
+//   res.json({ message: "This is an example route." });
+// });
+
+// Start server
+db.once("open", () => {
+  app.listen(PORT, () =>
+    console.log(`Server running on http://localhost:${PORT}/`)
+  );
+});
