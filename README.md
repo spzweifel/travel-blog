@@ -1,3 +1,3 @@
 # travel-blog
 
-Name is Orange Cat Travels maybe?
+npm run develop is used to start the react app
