@@ -12,7 +12,7 @@ const Home = () => {
     // const matchupList = data?.matchups || [];
     return (
         <div className="home-page">
-            <h1>This is my travel blog</h1>
+            <h1 className='welcome'>Welcome to My Blog!</h1>
             <h2>Let's find our next adventure!</h2>
        </div>
     );
