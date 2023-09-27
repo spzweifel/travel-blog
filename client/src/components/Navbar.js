@@ -38,25 +38,29 @@ const AppNavbar = () => {
   const stopPropagation = (e) => {
     e.stopPropagation();
   };
-  
+
   return (
     <>
       <nav
-        className={`navbar has-background-success-dark`}
+        className={`navbar is-success`}
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="container is-flex-direction-row is-justify-content-left">
+        <div className="container is-justify-content-flex-start">
+          <div>
+            <div className="nav-item">
+              <Link to="/" className="button hover is-medium is-rounded">
+                Home
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="container is-justify-content-space-between">
           <div className="nav-item">
             <Link
-              to="/"
-              className="button hover is-success is-medium is-rounded"
+              to="/About"
+              // className="button hover is-medium is-rounded"
             >
-              Home
-            </Link>
-          </div>
-          <div className="nav-item">
-            <Link to="/About" className="button hover is-medium is-rounded">
               About The Author
             </Link>
           </div>
@@ -64,27 +68,27 @@ const AppNavbar = () => {
             {/* Dropdown for Domestic American Trips */}
             <div className={`dropdown ${isDomesticActive ? "is-active" : ""}`}>
               <div className="dropdown-trigger">
-                <button
-                  className="button is-medium is-rounded"
+                <div className="domestic button"
+                  // className="button is-medium is-rounded"
                   onClick={toggleDomesticDropdown}
                 >
                   Domestic American Trips
-                </button>
+                </div>
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
                 <div className="dropdown-content">
                   <Link to="/domestic/california" className="dropdown-item">
                     California
                   </Link>
-                  <Link to="/domestic/colorado" className="dropdown-item">
+                  {/* <Link to="/domestic/colorado" className="dropdown-item">
                     Colorado
-                  </Link>
-                  <Link to="/domestic/kentucky" className="dropdown-item">
+                  </Link> */}
+                  {/* <Link to="/domestic/kentucky" className="dropdown-item">
                     Kentucky
-                  </Link>
-                  <Link to="/domestic/virginia" className="dropdown-item">
+                  </Link> */}
+                  {/* <Link to="/domestic/virginia" className="dropdown-item">
                     Virginia
-                  </Link>
+                  </Link> */}
                   {/* Add more trip links as needed */}
                 </div>
               </div>
@@ -92,35 +96,37 @@ const AppNavbar = () => {
           </div>
           <div className="nav-item">
             {/* Dropdown for International Trips */}
-            <div className={`dropdown ${isInternationalActive ? "is-active" : ""}`}>
+            <div
+              className={`dropdown ${isInternationalActive ? "is-active" : ""}`}
+            >
               <div className="dropdown-trigger">
-                <button
-                  className="button is-medium is-rounded"
+                <div className="international button"
+                  // className="button is-medium is-rounded"
                   onClick={toggleInternationalDropdown}
                 >
                   International Trips
-                </button>
+                </div>
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
                 <div className="dropdown-content">
-                  <Link to="/international/austria" className="dropdown-item">
+                  {/* <Link to="/international/austria" className="dropdown-item">
                     Austria
-                  </Link>
+                  </Link> */}
                   <Link to="/international/bali" className="dropdown-item">
                     Bali
                   </Link>
-                  <Link to="/international/italy" className="dropdown-item">
+                  {/* <Link to="/international/italy" className="dropdown-item">
                     Italy
-                  </Link>
+                  </Link> */}
                   <Link to="/international/japan" className="dropdown-item">
                     Japan
                   </Link>
-                  <Link to="/international/norway" className="dropdown-item">
+                  {/* <Link to="/international/norway" className="dropdown-item">
                     Norway
-                  </Link>
-                  <Link to="/international/slovenia" className="dropdown-item">
+                  </Link> */}
+                  {/* <Link to="/international/slovenia" className="dropdown-item">
                     Slovenia
-                  </Link>
+                  </Link> */}
                   {/* Add more trip links as needed */}
                 </div>
               </div>

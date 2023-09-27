@@ -10,3 +10,6 @@ const About = () => {
 }
 
 export default About;
+
+//Add a pic of me in nature or something
+//Finish the paragraph here
